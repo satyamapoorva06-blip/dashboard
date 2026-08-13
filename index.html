@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SI / 01 — Travel SIM Commerce Intelligence Platform">
-    <title>SI / 01 — Travel SIM Commerce Intelligence</title>
+    <meta name="description" content="TERRA — Commerce Intelligence & Analytics Platform">
+    <title>TERRA — Commerce Intelligence & Analytics</title>
     
     <!-- Google Fonts: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,334 +15,307 @@
 </head>
 <body>
 
-    <!-- Top Navigation Header -->
-    <header class="top-nav">
-        <div class="nav-container">
-            <div class="nav-brand">
-                <span class="brand-code">SI / 01</span>
-                <span class="brand-divider">—</span>
-                <span class="brand-title">Travel SIM Commerce Intelligence</span>
-            </div>
-            <div class="nav-actions">
-                <div class="status-pill" id="live-status-pill">
-                    <span class="pulse-dot"></span>
-                    <span id="live-status-text">● LIVE SUPABASE</span>
-                </div>
-                <button id="btn-open-settings" class="nav-btn" title="Supabase API Settings">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-                </button>
-            </div>
-        </div>
-    </header>
+    <!-- Main Terra App Wrapper -->
+    <div class="app-layout">
 
-    <!-- Main Content Body Container -->
-    <div class="dashboard-wrapper">
-        
-        <!-- Header Title & Controls Row -->
-        <div class="header-banner">
-            <div class="header-titles">
-                <h1 class="main-title">Travel SIM Commerce Intelligence</h1>
-                <div class="sub-date" id="current-date">MAY 20, 2026</div>
+        <!-- LEFT SIDEBAR NAVIGATION -->
+        <aside class="sidebar">
+            <div class="brand-logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                </div>
+                <span class="brand-name">TERRA</span>
             </div>
 
-            <div class="header-controls">
-                <div class="date-selector">
-                    <label for="as-of-date-picker">As of Date:</label>
-                    <input type="date" id="as-of-date-picker" class="date-input" value="2026-05-20">
+            <nav class="sidebar-nav">
+                <!-- Active Nav Group -->
+                <div class="nav-group">
+                    <a href="#dashboard" class="nav-item active">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                        <span>Dashboard</span>
+                        <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </a>
+                    <a href="#analytics" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                        <span>Analytics</span>
+                    </a>
                 </div>
 
-                <button id="btn-refresh" class="btn btn-secondary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
-                    Refresh
-                </button>
-
-                <button id="btn-export-main" class="btn btn-primary">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                    Export CSV
-                </button>
-            </div>
-        </div>
-
-        <!-- Connection Error Alert Banner -->
-        <div id="api-error-card" class="error-banner hidden">
-            <div class="banner-icon">⚠️</div>
-            <div class="banner-info">
-                <span class="banner-title">Supabase Connection Alert</span>
-                <span class="banner-text" id="api-error-message">Unable to reach live RPC endpoint.</span>
-            </div>
-            <div class="banner-actions">
-                <button id="btn-error-retry" class="btn btn-sm btn-primary">Retry</button>
-                <button id="btn-error-demo-mode" class="btn btn-sm btn-secondary">Demo Mode</button>
-            </div>
-        </div>
-
-        <!-- 4 Top Executive KPI Cards -->
-        <section class="kpi-grid">
-            <!-- KPI 1: MTD SIM REVENUE -->
-            <div class="kpi-card hero-kpi">
-                <div class="kpi-header">
-                    <span class="kpi-title">MTD SIM REVENUE</span>
-                    <span class="kpi-icon">💎</span>
-                </div>
-                <div class="kpi-value" id="hero-mtd-revenue">₹0.00</div>
-                <div class="kpi-footer">
-                    <span class="badge positive" id="hero-trend-pct">+0.0%</span>
-                    <span class="subtext">vs prev MTD (₹<span id="hero-prev-mtd-rev-badge">0</span>)</span>
-                </div>
-            </div>
-
-            <!-- KPI 2: TODAY REVENUE -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">TODAY REVENUE</span>
-                    <span class="kpi-icon">⚡</span>
-                </div>
-                <div class="kpi-value" id="today-revenue">₹0.00</div>
-                <div class="kpi-footer">
-                    <span class="badge positive" id="today-rev-pct">+0.0%</span>
-                    <span class="subtext">vs prev same day (₹<span id="prev-sameday-rev">0</span>)</span>
-                </div>
-            </div>
-
-            <!-- KPI 3: MTD SIM ORDERS -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">MTD SIM ORDERS</span>
-                    <span class="kpi-icon">📦</span>
-                </div>
-                <div class="kpi-value" id="hero-mtd-sales">0</div>
-                <div class="kpi-footer">
-                    <span class="subtext">Previous MTD: <strong id="hero-prev-mtd-sales">0</strong> orders</span>
-                </div>
-            </div>
-
-            <!-- KPI 4: TODAY SIM ORDERS -->
-            <div class="kpi-card">
-                <div class="kpi-header">
-                    <span class="kpi-title">TODAY SIM ORDERS</span>
-                    <span class="kpi-icon">📈</span>
-                </div>
-                <div class="kpi-value" id="today-sales">0</div>
-                <div class="kpi-footer">
-                    <span class="badge positive" id="today-sales-pct">+0.0%</span>
-                    <span class="subtext">vs prev same day (<span id="prev-sameday-sales">0</span> orders)</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Automated Briefing Card -->
-        <section class="card briefing-card">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Automated Telemetry Briefing</h3>
-                    <p class="card-subtitle">Real-time commercial narrative generated directly from Supabase RPC data</p>
-                </div>
-                <span class="tag-live">LIVE SIGNALS</span>
-            </div>
-            <div class="briefing-list" id="story-cards-container">
-                <div class="briefing-item">Loading commercial signals...</div>
-            </div>
-        </section>
-
-        <!-- Time-Series Performance Chart Section -->
-        <section class="card chart-card" id="performance">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title" id="chart-main-title">SIM Sales Volume Trajectory</h3>
-                    <p class="card-subtitle" id="chart-main-subtitle">Time-series trajectory derived from backend RPC endpoints</p>
+                <!-- Main Menu Group -->
+                <div class="nav-section">
+                    <span class="section-title">Main Menu</span>
+                    <a href="#insights" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                        <span>Insights</span>
+                        <span class="badge-count badge-red">10</span>
+                    </a>
+                    <a href="#content" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                        <span>Content</span>
+                    </a>
+                    <a href="#destinations" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+                        <span>Destinations</span>
+                    </a>
+                    <a href="#plans" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+                        <span>SIM Packages</span>
+                    </a>
+                    <a href="#advertisement" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                        <span>Advertisement</span>
+                    </a>
+                    <a href="#news" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/></svg>
+                        <span>News & Update</span>
+                    </a>
                 </div>
 
-                <div class="tab-group" role="tablist">
-                    <button class="tab-btn active" data-metric="daily_orders">Daily Orders</button>
-                    <button class="tab-btn" data-metric="monthly_orders">Monthly Orders</button>
-                    <button class="tab-btn" data-metric="staff_revenue">Staff Revenue</button>
+                <!-- Account Group -->
+                <div class="nav-section">
+                    <span class="section-title">Account</span>
+                    <a href="#account" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        <span>My Account</span>
+                        <span class="badge-count badge-red">4</span>
+                    </a>
+                    <a href="#people" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Staff Directory</span>
+                    </a>
+                    <a href="#settings" id="btn-open-settings-side" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                        <span>API Settings</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTAINER CONTENT -->
+        <main class="main-content">
+
+            <!-- TOP SEARCH & USER BAR -->
+            <header class="main-header">
+                <h1 class="header-title">Dashboard</h1>
+
+                <div class="search-bar">
+                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="global-search-input" placeholder="Search Here..." class="search-input">
+                </div>
+
+                <div class="user-profile" id="btn-open-settings">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Ali Riaz" class="user-avatar">
+                    <div class="user-info">
+                        <span class="user-name">Ali Riaz</span>
+                        <span class="user-role">Manager</span>
+                    </div>
+                    <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+            </header>
+
+            <!-- Error Alert Card -->
+            <div id="api-error-card" class="error-banner hidden">
+                <div class="banner-icon">⚠️</div>
+                <div class="banner-info">
+                    <span class="banner-title" id="api-error-title">Supabase Connection Alert</span>
+                    <span class="banner-text" id="api-error-message">Unable to reach live RPC endpoint.</span>
+                </div>
+                <div class="banner-actions">
+                    <button id="btn-error-retry" class="btn btn-sm btn-primary">Retry</button>
+                    <button id="btn-error-demo-mode" class="btn btn-sm btn-secondary">Demo Mode</button>
                 </div>
             </div>
 
-            <div class="chart-stats-bar">
-                <div class="stat-item"><span class="lbl">PEAK:</span> <strong id="chart-peak-val">--</strong></div>
-                <div class="stat-item"><span class="lbl">LOWEST:</span> <strong id="chart-low-val">--</strong></div>
-                <div class="stat-item"><span class="lbl">AVERAGE:</span> <strong id="chart-avg-val">--</strong></div>
-            </div>
-
-            <div class="chart-box">
-                <div id="chart-canvas-container" class="svg-container"></div>
-                <div id="chart-tooltip" class="tooltip hidden"></div>
-            </div>
-        </section>
-
-        <!-- Destination Demand Intelligence Section -->
-        <section class="card dest-card" id="destinations">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Destination Demand Intelligence</h3>
-                    <p class="card-subtitle">Travel SIM consumption & revenue breakdown across 56 destination countries</p>
-                </div>
-
-                <div class="tab-group">
-                    <button class="tab-btn active" id="btn-dest-sort-orders" data-sort="orders">Sort by Orders</button>
-                    <button class="tab-btn" id="btn-dest-sort-revenue" data-sort="revenue">Sort by Revenue</button>
-                </div>
-            </div>
-
-            <div class="insight-bar" id="dest-insight-statement">
-                <span class="insight-icon">✈️</span>
-                <span id="dest-insight-text">Analyzing global destination telemetry...</span>
-            </div>
-
-            <div class="dest-layout">
-                <!-- Top Destination Hero Highlight Box -->
-                <div class="top-dest-hero">
-                    <span class="hero-tag">#1 TRAVEL DESTINATION</span>
-                    <h2 class="hero-name" id="top-dest-name">Loading...</h2>
-                    <div class="hero-metrics">
-                        <div class="hero-m-item">
-                            <span class="m-lbl">TOTAL ORDERS</span>
-                            <span class="m-val" id="top-dest-orders">0</span>
-                        </div>
-                        <div class="hero-m-item">
-                            <span class="m-lbl">TOTAL REVENUE</span>
-                            <span class="m-val" id="top-dest-revenue">₹0.00</span>
-                        </div>
-                        <div class="hero-m-item">
-                            <span class="m-lbl">REVENUE SHARE</span>
-                            <span class="m-val" id="top-dest-share">0%</span>
+            <!-- SECTION 1: VISITORS SOURCE BANNER & 4 GRADIENT CARDS -->
+            <section class="section-panel banner-panel">
+                <div class="panel-left">
+                    <div class="panel-header-row">
+                        <h2 class="panel-heading">Visitors Source</h2>
+                        <div class="dropdown-pill">
+                            <span id="as-of-date-text">This Week</span>
+                            <input type="date" id="as-of-date-picker" value="2026-05-20" class="date-picker-hidden">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                         </div>
                     </div>
+
+                    <div class="total-metric">
+                        <div class="hero-stat-num" id="hero-mtd-revenue">₹4,72,087.00</div>
+                        <div class="hero-stat-lbl">Total Platform Revenue & Visitor Volume</div>
+                    </div>
                 </div>
 
-                <!-- Ranked Country Cards & Pagination -->
-                <div class="ranked-dest-wrap">
-                    <div id="destination-ranking-container" class="dest-list"></div>
+                <div class="panel-right gradient-cards-grid">
+                    <!-- Card 1: MTD SIM REVENUE (Instagram Style) -->
+                    <div class="grad-card card-instagram">
+                        <div class="grad-card-header">
+                            <span class="platform-icon">💎</span>
+                            <span class="badge-pct" id="hero-trend-pct">25% of Total</span>
+                        </div>
+                        <div class="grad-card-name">MTD SIM Revenue</div>
+                        <div class="grad-card-val" id="card-mtd-rev-val">₹4,72,087.00</div>
+                    </div>
 
-                    <div class="pagination-row">
-                        <span class="page-text" id="dest-page-indicator-text">Showing 1–10 of 56 destinations</span>
-                        <div class="page-actions">
-                            <select id="dest-page-size-select" class="select-field">
-                                <option value="10" selected>10 / page</option>
-                                <option value="15">15 / page</option>
-                                <option value="25">25 / page</option>
-                            </select>
-                            <button id="btn-dest-prev" class="btn btn-sm btn-secondary" disabled>Prev</button>
-                            <button id="btn-dest-next" class="btn btn-sm btn-secondary" disabled>Next</button>
+                    <!-- Card 2: TODAY REVENUE (Facebook Style) -->
+                    <div class="grad-card card-facebook">
+                        <div class="grad-card-header">
+                            <span class="platform-icon">⚡</span>
+                            <span class="badge-pct" id="today-rev-pct">45% of Total</span>
+                        </div>
+                        <div class="grad-card-name">Today Revenue</div>
+                        <div class="grad-card-val" id="card-today-rev-val">₹29,006.40</div>
+                    </div>
+
+                    <!-- Card 3: MTD ORDERS (Website Style) -->
+                    <div class="grad-card card-website">
+                        <div class="grad-card-header">
+                            <span class="platform-icon">📦</span>
+                            <span class="badge-pct">25% of Total</span>
+                        </div>
+                        <div class="grad-card-name">MTD SIM Orders</div>
+                        <div class="grad-card-val" id="card-mtd-orders-val">594</div>
+                    </div>
+
+                    <!-- Card 4: TODAY ORDERS (TikTok Style) -->
+                    <div class="grad-card card-tiktok">
+                        <div class="grad-card-header">
+                            <span class="platform-icon">📈</span>
+                            <span class="badge-pct" id="today-sales-pct">10% of Total</span>
+                        </div>
+                        <div class="grad-card-name">Today SIM Orders</div>
+                        <div class="grad-card-val" id="card-today-orders-val">34</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 2: STATISTICS PANEL (REVENUE SPLINE, PURCHASES BARS, GENDER DONUT) -->
+            <section class="section-panel stats-panel">
+                <div class="panel-header-row">
+                    <h2 class="panel-heading">Statistics</h2>
+                    <div class="time-filter-tabs">
+                        <button class="filter-tab">Today</button>
+                        <button class="filter-tab active">Week</button>
+                        <button class="filter-tab">Month</button>
+                        <button class="filter-tab">Year</button>
+                    </div>
+                    <a href="#data" class="link-more">View More</a>
+                </div>
+
+                <div class="stats-grid-3col">
+                    <!-- Spline 1: Revenue Spline Card -->
+                    <div class="stat-card stat-spline-card">
+                        <div class="stat-card-title">Revenue</div>
+                        <div class="stat-card-growth positive">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 4 4 20 20 20"/></svg>
+                            <span id="rev-growth-val">+36.20%</span>
+                        </div>
+                        <div class="stat-card-big" id="stat-rev-pct">36.20%</div>
+                        <div class="stat-card-sub">Total of Revenue</div>
+                        <div class="sparkline-box" id="sparkline-container"></div>
+                    </div>
+
+                    <!-- Bar Chart 2: Purchases Bar Chart Card -->
+                    <div class="stat-card stat-bars-card">
+                        <div class="stat-card-title">Purchases</div>
+                        <div class="stat-card-growth positive">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 4 4 20 20 20"/></svg>
+                            <span>+15.00%</span>
+                        </div>
+                        <div class="stat-card-big" id="stat-purchases-amount">₹29,006.40</div>
+                        <div class="stat-card-sub">Total Amount</div>
+                        
+                        <!-- Purple Vertical Bar Chart -->
+                        <div class="vertical-bars-container">
+                            <div class="vbar-item"><span class="vbar-top">40</span><div class="vbar-fill" style="height: 44%;"></div><span class="vbar-lbl">S</span></div>
+                            <div class="vbar-item"><span class="vbar-top">65</span><div class="vbar-fill" style="height: 72%;"></div><span class="vbar-lbl">M</span></div>
+                            <div class="vbar-item"><span class="vbar-top">50</span><div class="vbar-fill" style="height: 55%;"></div><span class="vbar-lbl">T</span></div>
+                            <div class="vbar-item"><span class="vbar-top">90</span><div class="vbar-fill" style="height: 100%;"></div><span class="vbar-lbl">W</span></div>
+                            <div class="vbar-item"><span class="vbar-top">70</span><div class="vbar-fill" style="height: 77%;"></div><span class="vbar-lbl">Th</span></div>
+                            <div class="vbar-item"><span class="vbar-top">85</span><div class="vbar-fill" style="height: 94%;"></div><span class="vbar-lbl">F</span></div>
+                            <div class="vbar-item"><span class="vbar-top">10</span><div class="vbar-fill" style="height: 12%;"></div><span class="vbar-lbl">S</span></div>
+                        </div>
+                    </div>
+
+                    <!-- Donut Chart 3: Gender / Share Donut Card -->
+                    <div class="stat-card stat-donut-card">
+                        <div class="stat-card-title">Gender & Demographics</div>
+                        <div class="donut-chart-box">
+                            <svg class="donut-svg" viewBox="0 0 36 36">
+                                <path class="donut-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#25273C" stroke-width="3.8" fill="none"/>
+                                <path class="donut-segment" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#6366F1" stroke-width="3.8" stroke-dasharray="63, 100" fill="none"/>
+                                <path class="donut-segment" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#06B6D4" stroke-width="3.8" stroke-dasharray="25, 100" stroke-dashoffset="-63" fill="none"/>
+                                <path class="donut-segment" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#3B82F6" stroke-width="3.8" stroke-dasharray="12, 100" stroke-dashoffset="-88" fill="none"/>
+                            </svg>
+                        </div>
+                        <div class="donut-legend">
+                            <div class="legend-item"><span class="dot dot-violet"></span><span>Male 63%</span></div>
+                            <div class="legend-item"><span class="dot dot-cyan"></span><span>Female 25%</span></div>
+                            <div class="legend-item"><span class="dot dot-blue"></span><span>Other 12%</span></div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SIM Packages Intelligence Section -->
-        <section class="card plans-card" id="plans">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">SIM Packages Intelligence</h3>
-                    <p class="card-subtitle">Performance breakdown across 275+ travel SIM packages and data allowances</p>
-                </div>
-
-                <div class="tab-group">
-                    <button class="tab-btn active" id="btn-plan-sort-orders" data-sort="orders">Most Orders</button>
-                    <button class="tab-btn" id="btn-plan-sort-revenue" data-sort="revenue">Most Revenue</button>
-                    <button class="tab-btn" id="btn-plan-sort-aov" data-sort="aov">Highest AOV</button>
-                </div>
-            </div>
-
-            <div class="insight-bar" id="plan-insight-statement">
-                <span class="insight-icon">📶</span>
-                <span id="plan-insight-text">Analyzing SIM plan telemetry...</span>
-            </div>
-
-            <div id="plans-container" class="plans-grid"></div>
-
-            <div class="pagination-row">
-                <span class="page-text" id="plan-page-indicator-text">Showing 1–10 of 275 plans</span>
-                <div class="page-actions">
-                    <select id="plan-page-size-select" class="select-field">
-                        <option value="10" selected>10 / page</option>
-                        <option value="15">15 / page</option>
-                        <option value="25">25 / page</option>
-                    </select>
-                    <button id="btn-plan-prev" class="btn btn-sm btn-secondary" disabled>Prev</button>
-                    <button id="btn-plan-next" class="btn btn-sm btn-secondary" disabled>Next</button>
-                </div>
-            </div>
-        </section>
-
-        <!-- Staff Analytics & Leaderboard Section -->
-        <section class="grid-2col staff-section" id="people">
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h3 class="card-title">Staff Sales Matrix</h3>
-                        <p class="card-subtitle">Individual revenue generation, order volume & today's sales velocity</p>
+            <!-- SECTION 3: COUNTRY & WORLD MAP PANEL -->
+            <section class="section-panel country-panel" id="destinations">
+                <div class="panel-header-row">
+                    <h2 class="panel-heading">Country Demand Intelligence</h2>
+                    <div class="dropdown-pill">
+                        <span>This Week</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </div>
                 </div>
-                <div id="matrix-container" class="table-scroll"></div>
-            </div>
 
-            <div class="card">
-                <div class="card-header">
-                    <div>
-                        <h3 class="card-title">Staff Leaderboard</h3>
-                        <p class="card-subtitle">Staff ranked by monthly revenue share</p>
+                <div class="country-layout-2col">
+                    <!-- Left: Ranked Country List -->
+                    <div class="country-list" id="destination-ranking-container"></div>
+
+                    <!-- Right: Vector World Map Display Box -->
+                    <div class="world-map-box">
+                        <svg viewBox="0 0 1000 500" class="world-svg">
+                            <!-- SVG Vector Map Polygons -->
+                            <path d="M150,150 L200,140 L280,180 L250,250 L180,220 Z" fill="#2E304B" stroke="#6366F1" stroke-width="1.5"/> <!-- North America -->
+                            <path d="M280,270 L340,290 L320,380 L260,350 Z" fill="#2E304B" stroke="#3B82F6" stroke-width="1.5"/> <!-- South America -->
+                            <path d="M480,120 L580,110 L600,180 L490,190 Z" fill="#4F46E5" stroke="#818CF8" stroke-width="2"/> <!-- Europe -->
+                            <path d="M470,210 L580,210 L560,340 L480,310 Z" fill="#2E304B" stroke="#06B6D4" stroke-width="1.5"/> <!-- Africa -->
+                            <path d="M620,130 L850,110 L880,260 L650,250 Z" fill="#4F46E5" stroke="#10B981" stroke-width="2"/> <!-- Asia -->
+                            <path d="M780,320 L880,320 L870,400 L790,390 Z" fill="#2E304B" stroke="#EC4899" stroke-width="1.5"/> <!-- Australia -->
+                        </svg>
+                        <div class="map-overlay-badge">
+                            <span class="pulse-dot"></span>
+                            <span>Global Active Destinations</span>
+                        </div>
                     </div>
                 </div>
-                <div id="leaderboard-list" class="leaderboard-list"></div>
+            </section>
 
-                <div class="dist-section">
-                    <span class="section-lbl">REVENUE SHARE CONTRIBUTION</span>
-                    <div id="distribution-bars" class="distribution-bars"></div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Employee Audit Log Table Section -->
-        <section class="card table-card" id="data">
-            <div class="card-header">
-                <div>
-                    <h3 class="card-title">Employee Sales Audit Log</h3>
-                    <p class="card-subtitle">Complete staff sales performance log derived from employee_table RPC</p>
-                </div>
-
-                <div class="table-actions">
-                    <div class="search-box">
-                        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                        <input type="text" id="table-search-input" class="input-search" placeholder="Search staff member...">
+            <!-- SECTION 4: SIM PACKAGES & EMPLOYEE AUDIT TABLE PANEL -->
+            <section class="section-panel table-panel" id="data">
+                <div class="panel-header-row">
+                    <h2 class="panel-heading">Employee Sales Audit Log</h2>
+                    <div class="header-controls">
+                        <button id="btn-refresh" class="btn btn-sm btn-secondary">Refresh</button>
+                        <button id="btn-export-main" class="btn btn-sm btn-primary">Export CSV</button>
                     </div>
-                    <button id="btn-density-toggle" class="btn btn-sm btn-secondary">Density: <strong id="density-state-lbl">Comfortable</strong></button>
                 </div>
-            </div>
 
-            <div class="table-responsive">
-                <table class="data-table" id="main-data-table">
-                    <thead>
-                        <tr>
-                            <th data-sort="rank" class="sortable">Rank <span class="sort-indicator"></span></th>
-                            <th data-sort="name" class="sortable">Staff Name <span class="sort-indicator"></span></th>
-                            <th data-sort="monthlyRevenue" class="sortable text-right active-sort">Monthly Revenue <span class="sort-indicator">↓</span></th>
-                            <th data-sort="monthlySales" class="sortable text-right">Monthly Sales <span class="sort-indicator"></span></th>
-                            <th data-sort="todayRevenue" class="sortable text-right">Today Revenue <span class="sort-indicator"></span></th>
-                            <th data-sort="todaySales" class="sortable text-right">Today Sales <span class="sort-indicator"></span></th>
-                        </tr>
-                    </thead>
-                    <tbody id="table-tbody"></tbody>
-                </table>
-            </div>
-
-            <div class="pagination-row">
-                <span class="page-text" id="pagination-info">Showing 1–10 of 10 staff members</span>
-                <div class="page-actions">
-                    <select id="table-page-size-select" class="select-field">
-                        <option value="10" selected>10 / page</option>
-                        <option value="15">15 / page</option>
-                        <option value="25">25 / page</option>
-                    </select>
-                    <button id="btn-prev-page" class="btn btn-sm btn-secondary" disabled>Prev</button>
-                    <span id="page-indicator" class="page-num">Page 1 of 1</span>
-                    <button id="btn-next-page" class="btn btn-sm btn-secondary" disabled>Next</button>
+                <div class="table-responsive">
+                    <table class="data-table" id="main-data-table">
+                        <thead>
+                            <tr>
+                                <th data-sort="rank" class="sortable">Rank</th>
+                                <th data-sort="name" class="sortable">Staff Name</th>
+                                <th data-sort="monthlyRevenue" class="sortable text-right active-sort">Monthly Revenue ↓</th>
+                                <th data-sort="monthlySales" class="sortable text-right">Monthly Sales</th>
+                                <th data-sort="todayRevenue" class="sortable text-right">Today Revenue</th>
+                                <th data-sort="todaySales" class="sortable text-right">Today Sales</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-tbody"></tbody>
+                    </table>
                 </div>
-            </div>
-        </section>
+            </section>
 
+        </main>
     </div>
 
     <!-- API CONFIGURATION MODAL -->

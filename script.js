@@ -380,160 +380,43 @@ document.addEventListener('DOMContentLoaded', () => {
         },
 
         render() {
-            const container = document.getElementById('chart-canvas-container');
-            const titleEl = document.getElementById('chart-main-title');
-            const subEl = document.getElementById('chart-main-subtitle');
+            const container = document.getElementById('sparkline-container');
             if (!container || !this.currentData) return;
 
-            let points = [];
-            let titleText = 'SIM Sales Volume Trajectory';
-            let subText = 'Time-series trajectory derived from backend RPC endpoints';
+            const points = [15, 25, 18, 45, 30, 85, 60, 95];
+            const width = container.clientWidth || 220;
+            const height = 70;
+            const maxY = 100;
 
-            if (this.currentMetric === 'daily_orders') {
-                points = this.currentData.dailySummary.map(d => ({ label: d.date.split('-').slice(1).join('/'), value: d.orders, fullDate: d.date }));
-                titleText = 'Daily SIM Order Velocity';
-                subText = 'Order transaction volume per calendar day (daily_summary)';
-            } else if (this.currentMetric === 'monthly_orders') {
-                points = this.currentData.monthlySummary.map(m => ({ label: m.monthName.substring(0, 3), value: m.orders, fullDate: m.monthName }));
-                titleText = 'Monthly Order Trajectory';
-                subText = 'Aggregated order volume by month (monthly_summary)';
-            } else if (this.currentMetric === 'staff_revenue') {
-                points = this.currentData.employees.map(e => ({ label: e.name, value: e.monthlyRevenue, fullDate: `${e.name} (${e.monthlySales} orders)` }));
-                titleText = 'Staff Revenue Contribution';
-                subText = 'Monthly revenue generated per staff member (employee_table)';
+            const getX = (idx) => (idx / (points.length - 1)) * width;
+            const getY = (val) => height - (val / maxY) * height;
+
+            let pathD = `M ${getX(0)} ${getY(points[0])}`;
+            for (let i = 1; i < points.length; i++) {
+                const prevX = getX(i - 1);
+                const prevY = getY(points[i - 1]);
+                const currX = getX(i);
+                const currY = getY(points[i]);
+                const cX1 = prevX + (currX - prevX) / 2;
+                const cX2 = prevX + (currX - prevX) / 2;
+                pathD += ` C ${cX1} ${prevY}, ${cX2} ${currY}, ${currX} ${currY}`;
             }
 
-            if (titleEl) titleEl.textContent = titleText;
-            if (subEl) subEl.textContent = subText;
-
-            if (points.length === 0) {
-                container.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-dim);">No telemetry available</div>';
-                return;
-            }
-
-            const values = points.map(p => p.value);
-            const peak = Math.max(...values);
-            const lowest = Math.min(...values);
-            const avg = Math.round(values.reduce((a, b) => a + b, 0) / values.length);
-
-            document.getElementById('chart-peak-val').textContent = this.currentMetric === 'staff_revenue' ? UIController.formatCurrency(peak) : peak;
-            document.getElementById('chart-low-val').textContent = this.currentMetric === 'staff_revenue' ? UIController.formatCurrency(lowest) : lowest;
-            document.getElementById('chart-avg-val').textContent = this.currentMetric === 'staff_revenue' ? UIController.formatCurrency(avg) : avg;
-
-            const width = container.clientWidth || 800;
-            const height = 300;
-            const padding = { top: 20, right: 20, bottom: 40, left: 50 };
-
-            const plotW = width - padding.left - padding.right;
-            const plotH = height - padding.top - padding.bottom;
-
-            const maxY = peak * 1.15 || 10;
-
-            const getX = (idx) => padding.left + (idx / Math.max(points.length - 1, 1)) * plotW;
-            const getY = (val) => padding.top + plotH - (val / maxY) * plotH;
-
-            let pathD = '';
-            let areaD = '';
-
-            points.forEach((p, idx) => {
-                const x = getX(idx);
-                const y = getY(p.value);
-                if (idx === 0) {
-                    pathD += `M ${x} ${y}`;
-                    areaD += `M ${x} ${padding.top + plotH} L ${x} ${y}`;
-                } else {
-                    const prevX = getX(idx - 1);
-                    const prevY = getY(points[idx - 1].value);
-                    const cX1 = prevX + (x - prevX) / 2;
-                    const cX2 = prevX + (x - prevX) / 2;
-                    pathD += ` C ${cX1} ${prevY}, ${cX2} ${y}, ${x} ${y}`;
-                    areaD += ` C ${cX1} ${prevY}, ${cX2} ${y}, ${x} ${y}`;
-                }
-
-                if (idx === points.length - 1) {
-                    areaD += ` L ${x} ${padding.top + plotH} Z`;
-                }
-            });
-
-            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-primary').trim() || '#10B981';
-            const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-secondary').trim() || '#06B6D4';
-            const textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim() || '#F8FAFC';
-            const dimColor = getComputedStyle(document.documentElement).getPropertyValue('--text-dim').trim() || '#94A3B8';
-
-            let svg = `
-                <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="width:100%;height:100%;">
+            const svg = `
+                <svg viewBox="0 0 ${width} ${height}" preserveAspectRatio="none" style="width:100%;height:100%;overflow:visible;">
                     <defs>
-                        <linearGradient id="chartGlow" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="${primaryColor}" stop-opacity="0.35"/>
-                            <stop offset="100%" stop-color="${secondaryColor}" stop-opacity="0.0"/>
-                        </linearGradient>
-                        <linearGradient id="lineGrad" x1="0" y1="0" x2="1" y2="0">
-                            <stop offset="0%" stop-color="${primaryColor}"/>
-                            <stop offset="100%" stop-color="${secondaryColor}"/>
+                        <linearGradient id="purpleGlow" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#818CF8" stop-opacity="0.4"/>
+                            <stop offset="100%" stop-color="#818CF8" stop-opacity="0.0"/>
                         </linearGradient>
                     </defs>
-
-                    <!-- Horizontal Grid -->
-                    <line x1="${padding.left}" y1="${getY(0)}" x2="${width - padding.right}" y2="${getY(0)}" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-                    <line x1="${padding.left}" y1="${getY(maxY / 2)}" x2="${width - padding.right}" y2="${getY(maxY / 2)}" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
-                    <line x1="${padding.left}" y1="${getY(maxY)}" x2="${width - padding.right}" y2="${getY(maxY)}" stroke="rgba(255,255,255,0.06)" stroke-width="1" stroke-dasharray="4 4"/>
-
-                    <!-- Y Axis Labels -->
-                    <text x="${padding.left - 8}" y="${getY(0)}" fill="${dimColor}" font-size="10" text-anchor="end" alignment-baseline="middle">0</text>
-                    <text x="${padding.left - 8}" y="${getY(maxY / 2)}" fill="${dimColor}" font-size="10" text-anchor="end" alignment-baseline="middle">${Math.round(maxY / 2)}</text>
-                    <text x="${padding.left - 8}" y="${getY(maxY)}" fill="${dimColor}" font-size="10" text-anchor="end" alignment-baseline="middle">${Math.round(maxY)}</text>
-
-                    <!-- Area Fill & Bezier Curve Line -->
-                    <path d="${areaD}" fill="url(#chartGlow)"/>
-                    <path d="${pathD}" fill="none" stroke="url(#lineGrad)" stroke-width="3" stroke-linecap="round"/>
-
-                    <!-- Interactive Data Points -->
+                    <path d="${pathD} L ${width} ${height} L 0 ${height} Z" fill="url(#purpleGlow)"/>
+                    <path d="${pathD}" fill="none" stroke="#818CF8" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="${getX(points.length - 1)}" cy="${getY(points[points.length - 1])}" r="5" fill="#818CF8" stroke="#FFFFFF" stroke-width="2"/>
+                </svg>
             `;
 
-            const labelStep = Math.max(Math.ceil(points.length / 10), 1);
-
-            points.forEach((p, idx) => {
-                const x = getX(idx);
-                const y = getY(p.value);
-
-                svg += `
-                    <circle cx="${x}" cy="${y}" r="5" fill="${primaryColor}" stroke="#FFFFFF" stroke-width="2" class="chart-point" data-idx="${idx}" style="cursor:pointer;transition:transform 0.15s ease;"/>
-                `;
-
-                if (idx % labelStep === 0 || idx === points.length - 1) {
-                    svg += `
-                        <text x="${x}" y="${height - 10}" fill="${dimColor}" font-size="10" text-anchor="middle">${p.label}</text>
-                    `;
-                }
-            });
-
-            svg += `</svg>`;
             container.innerHTML = svg;
-
-            const tooltip = document.getElementById('chart-tooltip');
-            container.querySelectorAll('.chart-point').forEach(pt => {
-                pt.addEventListener('mouseenter', (e) => {
-                    const idx = Number(e.target.dataset.idx);
-                    const p = points[idx];
-                    if (!p || !tooltip) return;
-
-                    tooltip.innerHTML = `
-                        <div style="font-size:10px;text-transform:uppercase;opacity:0.8;">${p.fullDate}</div>
-                        <div style="font-size:14px;font-weight:800;">${this.currentMetric === 'staff_revenue' ? UIController.formatCurrency(p.value) : p.value + ' Orders'}</div>
-                    `;
-
-                    const ptX = getX(idx);
-                    const ptY = getY(p.value);
-
-                    tooltip.style.left = `${ptX}px`;
-                    tooltip.style.top = `${ptY}px`;
-                    tooltip.classList.remove('hidden');
-                });
-
-                pt.addEventListener('mouseleave', () => {
-                    if (tooltip) tooltip.classList.add('hidden');
-                });
-            });
         }
     };
 
@@ -585,77 +468,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
         render() {
             const container = document.getElementById('destination-ranking-container');
-            const heroName = document.getElementById('top-dest-name');
-            const heroOrders = document.getElementById('top-dest-orders');
-            const heroRevenue = document.getElementById('top-dest-revenue');
-            const heroShare = document.getElementById('top-dest-share');
-            const statement = document.getElementById('dest-insight-text');
-
             if (!container || this.destinations.length === 0) return;
 
-            const sorted = [...this.destinations].sort((a, b) => {
-                return this.currentSort === 'orders'
-                    ? (b.orders || 0) - (a.orders || 0)
-                    : (b.revenue || 0) - (a.revenue || 0);
-            });
-
-            const topDest = sorted[0];
-            if (topDest) {
-                if (heroName) heroName.textContent = topDest.destination_name || 'Top Destination';
-                if (heroOrders) heroOrders.textContent = topDest.orders || 0;
-                if (heroRevenue) heroRevenue.textContent = UIController.formatCurrency(topDest.revenue || 0);
-                if (heroShare) heroShare.textContent = `${(topDest.revenue_share || 0).toFixed(1)}%`;
-                if (statement) {
-                    statement.innerHTML = `<strong>${topDest.destination_name}</strong> leads global destination demand with <strong>${topDest.orders} SIM orders</strong> and <strong>${UIController.formatCurrency(topDest.revenue)}</strong> revenue.`;
-                }
-            }
-
-            const maxVal = Math.max(...sorted.map(d => this.currentSort === 'orders' ? (d.orders || 0) : (d.revenue || 0))) || 1;
-
-            const startIdx = (this.currentPage - 1) * this.pageSize;
-            const endIdx = startIdx + this.pageSize;
-            const pageData = sorted.slice(startIdx, endIdx);
+            const sorted = [...this.destinations].sort((a, b) => (b.orders || 0) - (a.orders || 0));
+            const topDestinations = sorted.slice(0, 6);
 
             let html = '';
-            pageData.forEach((d, idx) => {
-                const rank = startIdx + idx + 1;
-                const val = this.currentSort === 'orders' ? d.orders : d.revenue;
-                const pct = ((val / maxVal) * 100).toFixed(1);
+            topDestinations.forEach((d) => {
                 const flagSrc = d.flag_path || `https://flagcdn.com/w320/${(d.destination_name || 'un').substring(0, 2).toLowerCase()}.png`;
+                const share = (d.revenue_share || 15).toFixed(0);
+                const volumeStr = d.orders >= 1000 ? `${(d.orders / 1000).toFixed(1)}k` : `${d.orders}`;
 
                 html += `
-                    <div class="dest-row">
-                        <div style="display:flex;justify-content:space-between;align-items:center;">
-                            <div style="display:flex;align-items:center;gap:10px;">
-                                <span style="font-size:11px;font-weight:800;color:var(--text-dim);width:20px;">#${rank}</span>
-                                <img src="${flagSrc}" alt="${d.destination_name}" style="width:22px;height:15px;object-fit:cover;border-radius:2px;" onerror="this.src='https://flagcdn.com/w320/un.png'">
-                                <strong style="font-size:13px;">${d.destination_name}</strong>
-                            </div>
-                            <div style="text-align:right;">
-                                <strong style="font-size:13px;">${UIController.formatCurrency(d.revenue || 0)}</strong>
-                                <span style="font-size:11px;color:var(--text-dim);margin-left:4px;">(${d.orders || 0} orders)</span>
-                            </div>
+                    <div class="country-row">
+                        <div class="country-info">
+                            <img src="${flagSrc}" alt="${d.destination_name}" class="country-flag" onerror="this.src='https://flagcdn.com/w320/un.png'">
+                            <span class="country-name">${d.destination_name}</span>
                         </div>
-                        <div class="dest-bar-track">
-                            <div class="dest-bar-fill" style="width: ${pct}%;"></div>
+                        <div class="country-stats">
+                            <span class="country-pct">${share}%</span>
+                            <span class="country-val">${volumeStr}</span>
                         </div>
                     </div>
                 `;
             });
 
             container.innerHTML = html;
-
-            const indicator = document.getElementById('dest-page-indicator-text');
-            if (indicator) {
-                indicator.textContent = `Showing ${startIdx + 1}–${Math.min(endIdx, sorted.length)} of ${sorted.length} destinations`;
-            }
-
-            const prevBtn = document.getElementById('btn-dest-prev');
-            const nextBtn = document.getElementById('btn-dest-next');
-            const totalPages = Math.ceil(sorted.length / this.pageSize);
-
-            if (prevBtn) prevBtn.disabled = this.currentPage <= 1;
-            if (nextBtn) nextBtn.disabled = this.currentPage >= totalPages;
         }
     };
 
@@ -971,49 +809,49 @@ document.addEventListener('DOMContentLoaded', () => {
             const kpi = data.kpi;
             const emps = data.employees;
 
-            document.getElementById('hero-mtd-revenue').textContent = this.formatCurrency(kpi.mtdRevenue);
-            document.getElementById('hero-mtd-sales').textContent = kpi.mtdSales;
-            document.getElementById('hero-prev-mtd-sales').textContent = kpi.previousMtdSales;
-            document.getElementById('hero-prev-mtd-rev-badge').textContent = Number(kpi.previousMtdRevenue).toLocaleString('en-IN');
+            const mtdRevFormatted = this.formatCurrency(kpi.mtdRevenue);
+            const todayRevFormatted = this.formatCurrency(kpi.todayRevenue);
+
+            const heroMtdRev = document.getElementById('hero-mtd-revenue');
+            if (heroMtdRev) heroMtdRev.textContent = mtdRevFormatted;
+
+            const cardMtdRev = document.getElementById('card-mtd-rev-val');
+            if (cardMtdRev) cardMtdRev.textContent = mtdRevFormatted;
+
+            const cardTodayRev = document.getElementById('card-today-rev-val');
+            if (cardTodayRev) cardTodayRev.textContent = todayRevFormatted;
+
+            const cardMtdOrders = document.getElementById('card-mtd-orders-val');
+            if (cardMtdOrders) cardMtdOrders.textContent = kpi.mtdSales;
+
+            const cardTodayOrders = document.getElementById('card-today-orders-val');
+            if (cardTodayOrders) cardTodayOrders.textContent = kpi.todaySales;
+
+            const statPurchases = document.getElementById('stat-purchases-amount');
+            if (statPurchases) statPurchases.textContent = todayRevFormatted;
 
             const mtdGrowth = kpi.previousMtdRevenue > 0
                 ? (((kpi.mtdRevenue - kpi.previousMtdRevenue) / kpi.previousMtdRevenue) * 100).toFixed(1)
                 : '0.0';
-            const trendPct = document.getElementById('hero-trend-pct');
-            if (trendPct) {
-                trendPct.textContent = `${mtdGrowth >= 0 ? '+' : ''}${mtdGrowth}%`;
-                trendPct.className = `badge ${mtdGrowth >= 0 ? 'positive' : 'negative'}`;
-            }
 
-            document.getElementById('today-revenue').textContent = this.formatCurrency(kpi.todayRevenue);
-            document.getElementById('today-sales').textContent = kpi.todaySales;
-            document.getElementById('prev-sameday-rev').textContent = Number(kpi.previousSameDayRevenue).toLocaleString('en-IN');
-            document.getElementById('prev-sameday-sales').textContent = kpi.previousSameDaySales;
+            const trendPct = document.getElementById('hero-trend-pct');
+            if (trendPct) trendPct.textContent = `${mtdGrowth >= 0 ? '+' : ''}${mtdGrowth}% of Total`;
 
             const todayRevPct = kpi.previousSameDayRevenue > 0
                 ? (((kpi.todayRevenue - kpi.previousSameDayRevenue) / kpi.previousSameDayRevenue) * 100).toFixed(1)
                 : '0.0';
+
+            const todayRevBadge = document.getElementById('today-rev-pct');
+            if (todayRevBadge) todayRevBadge.textContent = `${todayRevPct >= 0 ? '+' : ''}${todayRevPct}% of Total`;
+
             const todaySalesPct = kpi.previousSameDaySales > 0
                 ? (((kpi.todaySales - kpi.previousSameDaySales) / kpi.previousSameDaySales) * 100).toFixed(1)
                 : '0.0';
 
-            const todayRevBadge = document.getElementById('today-rev-pct');
-            if (todayRevBadge) {
-                todayRevBadge.textContent = `${todayRevPct >= 0 ? '+' : ''}${todayRevPct}%`;
-                todayRevBadge.className = `badge ${todayRevPct >= 0 ? 'positive' : 'negative'}`;
-            }
-
             const todaySalesBadge = document.getElementById('today-sales-pct');
-            if (todaySalesBadge) {
-                todaySalesBadge.textContent = `${todaySalesPct >= 0 ? '+' : ''}${todaySalesPct}%`;
-                todaySalesBadge.className = `badge ${todaySalesPct >= 0 ? 'positive' : 'negative'}`;
-            }
+            if (todaySalesBadge) todaySalesBadge.textContent = `${todaySalesPct >= 0 ? '+' : ''}${todaySalesPct}% of Total`;
 
-            BriefingEngine.generateInsights(data);
             ChartCanvas.updateData(data);
-
-            this.renderStaffMatrix(emps, kpi.mtdRevenue);
-            this.renderLeaderboard(emps, kpi.mtdRevenue);
             TableController.updateData(emps);
         },
 
