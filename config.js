@@ -1,31 +1,32 @@
 /**
- * Travel SIM Commerce Intelligence — Master Configuration
+ * TERRA — Commerce Intelligence & Analytics Platform
+ * Master Configuration & Telemetry Settings
  */
 
 window.CONFIG = {
-    APP_NAME: "Travel SIM Commerce Intelligence",
+    APP_NAME: "TERRA Commerce Intelligence",
     APP_CODE: "SI / 01",
     CURRENCY: "₹",
     DEFAULT_AS_OF_DATE: "2026-05-20",
-    DEFAULT_THEME: "cream",
+    DEFAULT_THEME: "dark",
     
-    // User Provided Supabase Credentials
+    // Supabase Live Connection Credentials (Optional)
     SUPABASE: {
         URL: "https://qjnqbkcvfowgylhnnrja.supabase.co",
-        ANON_KEY: "sb_publishable_jHBClLfFjDc8nmZXT58tkg_rnfaWWxs"
+        ANON_KEY: ""
     },
 
-    // RPC API Endpoints
+    // RPC Endpoints
     ENDPOINTS: {
         DASHBOARD: "/rest/v1/rpc/get_sales_dashboard",
         DESTINATIONS: "/rest/v1/rpc/get_destination_sales",
         PRODUCTS: "/rest/v1/rpc/get_product_sales"
     },
 
-    USE_DEMO_MODE: false,
+    USE_DEMO_MODE: true, // Default to rich interactive demo mode for seamless Vercel deployment
     DEBUG_MODE: false,
 
-    // High-Fidelity Fallback Demo Data
+    // High-Fidelity Fallback Demo Data Engine
     DEMO_CONFIG: {
         KPI_METRIC_CARD: [{
             today_sales: 34,

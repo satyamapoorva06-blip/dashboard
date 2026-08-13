@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="TERRA — Commerce Intelligence & Analytics Platform">
-    <title>TERRA — Commerce Intelligence & Analytics</title>
+    <meta name="description" content="TERRA — Advanced Commerce Intelligence & Global SIM Analytics Platform">
+    <title>TERRA — Commerce Intelligence & Global Analytics</title>
     
-    <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+    <!-- Modern Typography: Plus Jakarta Sans & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -15,23 +15,27 @@
 </head>
 <body>
 
-    <!-- Main Terra App Wrapper -->
+    <!-- App Wrapper -->
     <div class="app-layout">
 
+        <!-- Mobile Sidebar Overlay Backdrop -->
+        <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
         <!-- LEFT SIDEBAR NAVIGATION -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="app-sidebar">
             <div class="brand-logo">
                 <div class="logo-icon">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
                 </div>
                 <span class="brand-name">TERRA</span>
+                <button class="sidebar-close-btn" id="btn-close-mobile-sidebar" aria-label="Close Navigation">✕</button>
             </div>
 
             <nav class="sidebar-nav">
                 <!-- Active Nav Group -->
                 <div class="nav-group">
                     <a href="#dashboard" class="nav-item active">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>
                         <span>Dashboard</span>
                         <svg class="nav-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
                     </a>
@@ -49,10 +53,6 @@
                         <span>Insights</span>
                         <span class="badge-count badge-red">10</span>
                     </a>
-                    <a href="#content" class="nav-item">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-                        <span>Content</span>
-                    </a>
                     <a href="#destinations" class="nav-item">
                         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
                         <span>Destinations</span>
@@ -61,34 +61,28 @@
                         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
                         <span>SIM Packages</span>
                     </a>
-                    <a href="#advertisement" class="nav-item">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-                        <span>Advertisement</span>
-                    </a>
-                    <a href="#news" class="nav-item">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2"/></svg>
-                        <span>News & Update</span>
+                    <a href="#data" class="nav-item">
+                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                        <span>Staff Audit</span>
                     </a>
                 </div>
 
-                <!-- Account Group -->
+                <!-- System Group -->
                 <div class="nav-section">
-                    <span class="section-title">Account</span>
-                    <a href="#account" class="nav-item">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        <span>My Account</span>
-                        <span class="badge-count badge-red">4</span>
-                    </a>
-                    <a href="#people" class="nav-item">
-                        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                        <span>Staff Directory</span>
-                    </a>
-                    <a href="#settings" id="btn-open-settings-side" class="nav-item">
+                    <span class="section-title">System</span>
+                    <button id="btn-open-settings-side" class="nav-item nav-btn-link">
                         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
                         <span>API Settings</span>
-                    </a>
+                    </button>
                 </div>
             </nav>
+
+            <div class="sidebar-footer">
+                <div class="status-indicator-pill" id="sidebar-status-pill">
+                    <span class="status-dot"></span>
+                    <span id="live-status-text">● DEMO MODE</span>
+                </div>
+            </div>
         </aside>
 
         <!-- MAIN CONTAINER CONTENT -->
@@ -96,33 +90,48 @@
 
             <!-- TOP SEARCH & USER BAR -->
             <header class="main-header">
-                <h1 class="header-title">Dashboard</h1>
-
-                <div class="search-bar">
-                    <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                    <input type="text" id="global-search-input" placeholder="Search Here..." class="search-input">
+                <div class="header-left">
+                    <button class="mobile-toggle-btn" id="btn-open-mobile-sidebar" aria-label="Toggle Menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div>
+                        <h1 class="header-title" id="dynamic-greeting">Dashboard</h1>
+                        <p class="header-sub" id="header-date-sub">Commerce Intelligence Telemetry</p>
+                    </div>
                 </div>
 
-                <div class="user-profile" id="btn-open-settings">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Ali Riaz" class="user-avatar">
-                    <div class="user-info">
-                        <span class="user-name">Ali Riaz</span>
-                        <span class="user-role">Manager</span>
+                <div class="header-right">
+                    <div class="search-bar">
+                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="global-search-input" placeholder="Search staff, SIMs, countries..." class="search-input">
                     </div>
-                    <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+
+                    <div class="header-notifications" id="btn-notifications">
+                        <svg class="notif-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                        <span class="notif-badge">3</span>
+                    </div>
+
+                    <div class="user-profile" id="btn-open-settings">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" alt="Ali Riaz" class="user-avatar">
+                        <div class="user-info">
+                            <span class="user-name">Ali Riaz</span>
+                            <span class="user-role">Manager</span>
+                        </div>
+                        <svg class="dropdown-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
                 </div>
             </header>
 
-            <!-- Error Alert Card -->
+            <!-- Error Notice Card (Dismissible) -->
             <div id="api-error-card" class="error-banner hidden">
                 <div class="banner-icon">⚠️</div>
                 <div class="banner-info">
-                    <span class="banner-title" id="api-error-title">Supabase Connection Alert</span>
-                    <span class="banner-text" id="api-error-message">Unable to reach live RPC endpoint.</span>
+                    <span class="banner-title" id="api-error-title">Supabase Live Sync Alert</span>
+                    <span class="banner-text" id="api-error-message">Running on local interactive demo engine.</span>
                 </div>
                 <div class="banner-actions">
-                    <button id="btn-error-retry" class="btn btn-sm btn-primary">Retry</button>
-                    <button id="btn-error-demo-mode" class="btn btn-sm btn-secondary">Demo Mode</button>
+                    <button id="btn-error-retry" class="btn btn-sm btn-primary">Retry API</button>
+                    <button id="btn-error-demo-mode" class="btn btn-sm btn-secondary">Interactive Demo Mode</button>
                 </div>
             </div>
 
@@ -131,7 +140,7 @@
                 <div class="panel-left">
                     <div class="panel-header-row">
                         <h2 class="panel-heading">Visitors Source</h2>
-                        <div class="dropdown-pill">
+                        <div class="dropdown-pill" id="date-pill-container">
                             <span id="as-of-date-text">This Week</span>
                             <input type="date" id="as-of-date-picker" value="2026-05-20" class="date-picker-hidden">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -140,46 +149,46 @@
 
                     <div class="total-metric">
                         <div class="hero-stat-num" id="hero-mtd-revenue">₹4,72,087.00</div>
-                        <div class="hero-stat-lbl">Total Platform Revenue & Visitor Volume</div>
+                        <div class="hero-stat-lbl">Total Platform Revenue &amp; Visitor Volume</div>
                     </div>
                 </div>
 
                 <div class="panel-right gradient-cards-grid">
                     <!-- Card 1: MTD SIM REVENUE (Instagram Style) -->
-                    <div class="grad-card card-instagram">
+                    <div class="grad-card card-instagram" data-card-filter="mtd-rev">
                         <div class="grad-card-header">
                             <span class="platform-icon">💎</span>
-                            <span class="badge-pct" id="hero-trend-pct">25% of Total</span>
+                            <span class="badge-pct" id="hero-trend-pct">+25.0% vs MTD</span>
                         </div>
                         <div class="grad-card-name">MTD SIM Revenue</div>
                         <div class="grad-card-val" id="card-mtd-rev-val">₹4,72,087.00</div>
                     </div>
 
                     <!-- Card 2: TODAY REVENUE (Facebook Style) -->
-                    <div class="grad-card card-facebook">
+                    <div class="grad-card card-facebook" data-card-filter="today-rev">
                         <div class="grad-card-header">
                             <span class="platform-icon">⚡</span>
-                            <span class="badge-pct" id="today-rev-pct">45% of Total</span>
+                            <span class="badge-pct" id="today-rev-pct">+45.0% vs yesterday</span>
                         </div>
                         <div class="grad-card-name">Today Revenue</div>
                         <div class="grad-card-val" id="card-today-rev-val">₹29,006.40</div>
                     </div>
 
                     <!-- Card 3: MTD ORDERS (Website Style) -->
-                    <div class="grad-card card-website">
+                    <div class="grad-card card-website" data-card-filter="mtd-orders">
                         <div class="grad-card-header">
                             <span class="platform-icon">📦</span>
-                            <span class="badge-pct">25% of Total</span>
+                            <span class="badge-pct" id="card-mtd-orders-badge">594 Orders</span>
                         </div>
                         <div class="grad-card-name">MTD SIM Orders</div>
                         <div class="grad-card-val" id="card-mtd-orders-val">594</div>
                     </div>
 
                     <!-- Card 4: TODAY ORDERS (TikTok Style) -->
-                    <div class="grad-card card-tiktok">
+                    <div class="grad-card card-tiktok" data-card-filter="today-orders">
                         <div class="grad-card-header">
                             <span class="platform-icon">📈</span>
-                            <span class="badge-pct" id="today-sales-pct">10% of Total</span>
+                            <span class="badge-pct" id="today-sales-pct">+36.0% order speed</span>
                         </div>
                         <div class="grad-card-name">Today SIM Orders</div>
                         <div class="grad-card-val" id="card-today-orders-val">34</div>
@@ -188,63 +197,67 @@
             </section>
 
             <!-- SECTION 2: STATISTICS PANEL (REVENUE SPLINE, PURCHASES BARS, GENDER DONUT) -->
-            <section class="section-panel stats-panel">
+            <section class="section-panel stats-panel" id="analytics">
                 <div class="panel-header-row">
                     <h2 class="panel-heading">Statistics</h2>
                     <div class="time-filter-tabs">
-                        <button class="filter-tab">Today</button>
-                        <button class="filter-tab active">Week</button>
-                        <button class="filter-tab">Month</button>
-                        <button class="filter-tab">Year</button>
+                        <button class="filter-tab" data-timeframe="today">Today</button>
+                        <button class="filter-tab active" data-timeframe="week">Week</button>
+                        <button class="filter-tab" data-timeframe="month">Month</button>
+                        <button class="filter-tab" data-timeframe="year">Year</button>
                     </div>
-                    <a href="#data" class="link-more">View More</a>
+                    <a href="#data" class="link-more">View Data Audit →</a>
                 </div>
 
                 <div class="stats-grid-3col">
                     <!-- Spline 1: Revenue Spline Card -->
                     <div class="stat-card stat-spline-card">
-                        <div class="stat-card-title">Revenue</div>
+                        <div class="stat-card-title">Revenue Velocity</div>
                         <div class="stat-card-growth positive">
                             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 4 4 20 20 20"/></svg>
                             <span id="rev-growth-val">+36.20%</span>
                         </div>
                         <div class="stat-card-big" id="stat-rev-pct">36.20%</div>
-                        <div class="stat-card-sub">Total of Revenue</div>
+                        <div class="stat-card-sub">Share of Monthly Target</div>
                         <div class="sparkline-box" id="sparkline-container"></div>
                     </div>
 
                     <!-- Bar Chart 2: Purchases Bar Chart Card -->
                     <div class="stat-card stat-bars-card">
-                        <div class="stat-card-title">Purchases</div>
+                        <div class="stat-card-title">Purchases Trend</div>
                         <div class="stat-card-growth positive">
                             <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="12 4 4 20 20 20"/></svg>
                             <span>+15.00%</span>
                         </div>
                         <div class="stat-card-big" id="stat-purchases-amount">₹29,006.40</div>
-                        <div class="stat-card-sub">Total Amount</div>
+                        <div class="stat-card-sub">Total Amount Processed</div>
                         
-                        <!-- Purple Vertical Bar Chart -->
-                        <div class="vertical-bars-container">
-                            <div class="vbar-item"><span class="vbar-top">40</span><div class="vbar-fill" style="height: 44%;"></div><span class="vbar-lbl">S</span></div>
-                            <div class="vbar-item"><span class="vbar-top">65</span><div class="vbar-fill" style="height: 72%;"></div><span class="vbar-lbl">M</span></div>
-                            <div class="vbar-item"><span class="vbar-top">50</span><div class="vbar-fill" style="height: 55%;"></div><span class="vbar-lbl">T</span></div>
-                            <div class="vbar-item"><span class="vbar-top">90</span><div class="vbar-fill" style="height: 100%;"></div><span class="vbar-lbl">W</span></div>
-                            <div class="vbar-item"><span class="vbar-top">70</span><div class="vbar-fill" style="height: 77%;"></div><span class="vbar-lbl">Th</span></div>
-                            <div class="vbar-item"><span class="vbar-top">85</span><div class="vbar-fill" style="height: 94%;"></div><span class="vbar-lbl">F</span></div>
-                            <div class="vbar-item"><span class="vbar-top">10</span><div class="vbar-fill" style="height: 12%;"></div><span class="vbar-lbl">S</span></div>
+                        <!-- Vertical Bar Chart -->
+                        <div class="vertical-bars-container" id="weekly-bars-container">
+                            <div class="vbar-item" data-day="Sunday" data-val="40"><span class="vbar-top">40</span><div class="vbar-fill" style="height: 44%;"></div><span class="vbar-lbl">S</span></div>
+                            <div class="vbar-item" data-day="Monday" data-val="65"><span class="vbar-top">65</span><div class="vbar-fill" style="height: 72%;"></div><span class="vbar-lbl">M</span></div>
+                            <div class="vbar-item" data-day="Tuesday" data-val="50"><span class="vbar-top">50</span><div class="vbar-fill" style="height: 55%;"></div><span class="vbar-lbl">T</span></div>
+                            <div class="vbar-item" data-day="Wednesday" data-val="90"><span class="vbar-top">90</span><div class="vbar-fill" style="height: 100%;"></div><span class="vbar-lbl">W</span></div>
+                            <div class="vbar-item" data-day="Thursday" data-val="70"><span class="vbar-top">70</span><div class="vbar-fill" style="height: 77%;"></div><span class="vbar-lbl">Th</span></div>
+                            <div class="vbar-item" data-day="Friday" data-val="85"><span class="vbar-top">85</span><div class="vbar-fill" style="height: 94%;"></div><span class="vbar-lbl">F</span></div>
+                            <div class="vbar-item" data-day="Saturday" data-val="10"><span class="vbar-top">10</span><div class="vbar-fill" style="height: 12%;"></div><span class="vbar-lbl">S</span></div>
                         </div>
                     </div>
 
-                    <!-- Donut Chart 3: Gender / Share Donut Card -->
+                    <!-- Donut Chart 3: Gender / Demographics Donut Card -->
                     <div class="stat-card stat-donut-card">
-                        <div class="stat-card-title">Gender & Demographics</div>
+                        <div class="stat-card-title">Demographics & Share</div>
                         <div class="donut-chart-box">
                             <svg class="donut-svg" viewBox="0 0 36 36">
                                 <path class="donut-ring" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#25273C" stroke-width="3.8" fill="none"/>
-                                <path class="donut-segment" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#6366F1" stroke-width="3.8" stroke-dasharray="63, 100" fill="none"/>
-                                <path class="donut-segment" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#06B6D4" stroke-width="3.8" stroke-dasharray="25, 100" stroke-dashoffset="-63" fill="none"/>
-                                <path class="donut-segment" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#3B82F6" stroke-width="3.8" stroke-dasharray="12, 100" stroke-dashoffset="-88" fill="none"/>
+                                <path class="donut-segment segment-male" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#6366F1" stroke-width="3.8" stroke-dasharray="63, 100" fill="none"/>
+                                <path class="donut-segment segment-female" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#06B6D4" stroke-width="3.8" stroke-dasharray="25, 100" stroke-dashoffset="-63" fill="none"/>
+                                <path class="donut-segment segment-other" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" stroke="#3B82F6" stroke-width="3.8" stroke-dasharray="12, 100" stroke-dashoffset="-88" fill="none"/>
                             </svg>
+                            <div class="donut-center-label">
+                                <span class="donut-center-num">63%</span>
+                                <span class="donut-center-sub">Male Lead</span>
+                            </div>
                         </div>
                         <div class="donut-legend">
                             <div class="legend-item"><span class="dot dot-violet"></span><span>Male 63%</span></div>
@@ -258,10 +271,12 @@
             <!-- SECTION 3: COUNTRY & WORLD MAP PANEL -->
             <section class="section-panel country-panel" id="destinations">
                 <div class="panel-header-row">
-                    <h2 class="panel-heading">Country Demand Intelligence</h2>
-                    <div class="dropdown-pill">
-                        <span>This Week</span>
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                    <div>
+                        <h2 class="panel-heading">Country Demand Intelligence</h2>
+                        <p class="panel-subtext">Realtime SIM order distribution across global travel hubs</p>
+                    </div>
+                    <div class="panel-header-actions">
+                        <input type="text" id="country-search-input" placeholder="Search destination..." class="table-search-input" style="width: 180px;">
                     </div>
                 </div>
 
@@ -272,28 +287,68 @@
                     <!-- Right: Vector World Map Display Box -->
                     <div class="world-map-box">
                         <svg viewBox="0 0 1000 500" class="world-svg">
-                            <!-- SVG Vector Map Polygons -->
+                            <!-- World Map SVG Continents -->
                             <path d="M150,150 L200,140 L280,180 L250,250 L180,220 Z" fill="#2E304B" stroke="#6366F1" stroke-width="1.5"/> <!-- North America -->
                             <path d="M280,270 L340,290 L320,380 L260,350 Z" fill="#2E304B" stroke="#3B82F6" stroke-width="1.5"/> <!-- South America -->
                             <path d="M480,120 L580,110 L600,180 L490,190 Z" fill="#4F46E5" stroke="#818CF8" stroke-width="2"/> <!-- Europe -->
                             <path d="M470,210 L580,210 L560,340 L480,310 Z" fill="#2E304B" stroke="#06B6D4" stroke-width="1.5"/> <!-- Africa -->
                             <path d="M620,130 L850,110 L880,260 L650,250 Z" fill="#4F46E5" stroke="#10B981" stroke-width="2"/> <!-- Asia -->
                             <path d="M780,320 L880,320 L870,400 L790,390 Z" fill="#2E304B" stroke="#EC4899" stroke-width="1.5"/> <!-- Australia -->
+
+                            <!-- Live Hotspot Glow Pulse Points -->
+                            <g class="map-pulse-group" transform="translate(730, 210)">
+                                <circle r="12" fill="rgba(16, 185, 129, 0.3)" class="map-ping-ring"/>
+                                <circle r="5" fill="#10B981"/>
+                            </g>
+                            <g class="map-pulse-group" transform="translate(510, 150)">
+                                <circle r="12" fill="rgba(99, 102, 241, 0.3)" class="map-ping-ring"/>
+                                <circle r="5" fill="#6366F1"/>
+                            </g>
+                            <g class="map-pulse-group" transform="translate(220, 180)">
+                                <circle r="12" fill="rgba(59, 130, 246, 0.3)" class="map-ping-ring"/>
+                                <circle r="5" fill="#3B82F6"/>
+                            </g>
+                            <g class="map-pulse-group" transform="translate(560, 220)">
+                                <circle r="12" fill="rgba(245, 158, 11, 0.3)" class="map-ping-ring"/>
+                                <circle r="5" fill="#F59E0B"/>
+                            </g>
                         </svg>
                         <div class="map-overlay-badge">
                             <span class="pulse-dot"></span>
-                            <span>Global Active Destinations</span>
+                            <span>Global Active SIM Destinations</span>
                         </div>
                     </div>
                 </div>
             </section>
 
             <!-- SECTION 4: SIM PACKAGES & EMPLOYEE AUDIT TABLE PANEL -->
+            <section class="section-panel table-panel" id="plans">
+                <div class="panel-header-row">
+                    <h2 class="panel-heading">Top SIM Packages</h2>
+                    <div class="header-controls">
+                        <span class="plan-insight-text" id="plan-insight-text">Top package: Thailand Unlimited 5G</span>
+                    </div>
+                </div>
+
+                <div class="plans-grid" id="plans-container"></div>
+                <div class="pagination-bar" style="margin-top: 14px;">
+                    <span id="plan-page-indicator-text" class="pagination-info">Showing top SIM packages</span>
+                </div>
+            </section>
+
+            <!-- SECTION 5: EMPLOYEE AUDIT TABLE -->
             <section class="section-panel table-panel" id="data">
                 <div class="panel-header-row">
-                    <h2 class="panel-heading">Employee Sales Audit Log</h2>
+                    <div>
+                        <h2 class="panel-heading">Employee Sales Audit Log</h2>
+                        <p class="panel-subtext">Detailed monthly &amp; daily performance leaderboard</p>
+                    </div>
                     <div class="header-controls">
-                        <button id="btn-refresh" class="btn btn-sm btn-secondary">Refresh</button>
+                        <input type="text" id="table-search-input" placeholder="Filter staff name..." class="table-search-input">
+                        <button id="btn-refresh" class="btn btn-sm btn-secondary" title="Sync Telemetry">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                            Refresh
+                        </button>
                         <button id="btn-export-main" class="btn btn-sm btn-primary">Export CSV</button>
                     </div>
                 </div>
@@ -303,15 +358,24 @@
                         <thead>
                             <tr>
                                 <th data-sort="rank" class="sortable">Rank</th>
-                                <th data-sort="name" class="sortable">Staff Name</th>
-                                <th data-sort="monthlyRevenue" class="sortable text-right active-sort">Monthly Revenue ↓</th>
-                                <th data-sort="monthlySales" class="sortable text-right">Monthly Sales</th>
-                                <th data-sort="todayRevenue" class="sortable text-right">Today Revenue</th>
-                                <th data-sort="todaySales" class="sortable text-right">Today Sales</th>
+                                <th data-sort="name" class="sortable">Staff Name <span class="sort-indicator"></span></th>
+                                <th data-sort="monthlyRevenue" class="sortable text-right active-sort">Monthly Revenue <span class="sort-indicator">↓</span></th>
+                                <th data-sort="monthlySales" class="sortable text-right">Monthly Sales <span class="sort-indicator"></span></th>
+                                <th data-sort="todayRevenue" class="sortable text-right">Today Revenue <span class="sort-indicator"></span></th>
+                                <th data-sort="todaySales" class="sortable text-right">Today Sales <span class="sort-indicator"></span></th>
                             </tr>
                         </thead>
                         <tbody id="table-tbody"></tbody>
                     </table>
+                </div>
+
+                <div class="pagination-bar">
+                    <span id="pagination-info" class="pagination-info">Showing staff records</span>
+                    <div class="pagination-controls">
+                        <button id="btn-prev-page" class="btn-page" disabled>← Previous</button>
+                        <span id="page-indicator" class="page-indicator">Page 1 of 1</span>
+                        <button id="btn-next-page" class="btn-page">Next →</button>
+                    </div>
                 </div>
             </section>
 
@@ -322,15 +386,15 @@
     <div id="settings-modal" class="modal-overlay hidden">
         <div class="modal-dialog">
             <div class="modal-head">
-                <h3>Supabase API Settings</h3>
+                <h3>Supabase API &amp; Telemetry Settings</h3>
                 <button id="btn-close-settings" class="btn-close">✕</button>
             </div>
             <div class="modal-body">
                 <div class="field-group">
                     <label class="field-label">DATA SOURCE ENGINE</label>
                     <div class="tab-group" style="width: 100%;">
-                        <button class="tab-btn active" id="btn-settings-mode-live" style="flex:1;">LIVE SUPABASE</button>
-                        <button class="tab-btn" id="btn-settings-mode-demo" style="flex:1;">DEMO MODE</button>
+                        <button class="tab-btn active" id="btn-settings-mode-demo" style="flex:1;">DEMO MODE</button>
+                        <button class="tab-btn" id="btn-settings-mode-live" style="flex:1;">LIVE SUPABASE</button>
                     </div>
                 </div>
 
@@ -354,6 +418,7 @@
         </div>
     </div>
 
+    <!-- TOAST STACK CONTAINER -->
     <div id="toast-container" class="toast-stack"></div>
 
     <script src="config.js"></script>
