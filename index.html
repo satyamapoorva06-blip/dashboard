@@ -1,0 +1,1142 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cream">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SI / 01 — Travel SIM Commerce Intelligence Platform">
+    <title>SI / 01 — Travel SIM Commerce Intelligence</title>
+    
+    <!-- Google Fonts: Instrument Serif & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- Embedded Critical CSS for Bulletproof Instant Rendering -->
+    <style>
+/* ============================================================
+   SI / 01 — TRAVEL SIM COMMERCE INTELLIGENCE
+   Exact Editorial Cream & Terracotta Design System
+   ============================================================ */
+
+:root {
+    --bg-page: #F5F5F0;
+    --bg-header: rgba(245, 245, 240, 0.92);
+    --bg-card: #FFFFFF;
+    --bg-card-subtle: #FAF9F6;
+    --bg-hover: #F0EFEA;
+    
+    --text-main: #1A1A1A;
+    --text-muted: #555550;
+    --text-dim: #888880;
+    
+    --border: #E5E5DC;
+    --border-dark: #D0D0C5;
+    
+    --accent-primary: #E85D3F;       /* Warm Terracotta */
+    --accent-secondary: #D44C2E;
+    --accent-light: rgba(232, 93, 63, 0.1);
+    
+    --success: #2E7D32;
+    --success-bg: #E8F5E9;
+    --danger: #C62828;
+    --danger-bg: #FFEBEE;
+    
+    --shadow-card: 0 2px 10px rgba(0, 0, 0, 0.03), 0 1px 3px rgba(0, 0, 0, 0.02);
+    --shadow-hover: 0 10px 25px -5px rgba(232, 93, 63, 0.12);
+    
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0; padding: 0;
+}
+
+html {
+    font-size: 14px;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.5;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+svg { max-width: 100%; max-height: 100%; }
+.hidden { display: none !important; }
+
+/* ------------------------------------------------------------
+   TYPOGRAPHY SPECIFICATION (INSTRUMENT SERIF)
+   ------------------------------------------------------------ */
+.serif-font, .main-title, .kpi-value, .card-title, .hero-name, .banner-title {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-weight: 400;
+}
+
+/* ------------------------------------------------------------
+   TOP NAVIGATION HEADER
+   ------------------------------------------------------------ */
+.top-nav {
+    height: 60px;
+    background-color: var(--bg-header);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    padding: 0 40px;
+}
+
+.nav-container {
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.brand-code {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.brand-divider { color: var(--text-dim); }
+.brand-title { color: var(--text-main); letter-spacing: -0.01em; }
+
+.nav-actions { display: flex; align-items: center; gap: 12px; }
+
+.status-pill {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--success);
+}
+
+.pulse-dot {
+    width: 8px; height: 8px;
+    background-color: var(--success);
+    border-radius: 50%;
+    box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.4);
+    animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0.6); }
+    70% { box-shadow: 0 0 0 8px rgba(46, 125, 50, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+}
+
+.nav-btn {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.nav-btn svg { width: 16px; height: 16px; }
+
+.nav-btn:hover {
+    background-color: var(--bg-hover);
+    color: var(--text-main);
+    border-color: var(--border-dark);
+}
+
+/* ------------------------------------------------------------
+   MAIN WRAPPER & HEADER ROW
+   ------------------------------------------------------------ */
+.dashboard-wrapper {
+    max-width: 1340px;
+    margin: 0 auto;
+    padding: 36px 40px 80px 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.header-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.main-title {
+    font-size: 36px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: var(--text-main);
+}
+
+.sub-date {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: var(--text-dim);
+    margin-top: 4px;
+}
+
+.header-controls { display: flex; align-items: center; gap: 14px; }
+
+.date-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.date-input, .select-field {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 7px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+    outline: none;
+    transition: var(--transition);
+}
+
+.date-input:focus, .select-field:focus {
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px var(--accent-light);
+}
+
+.btn {
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 8px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn svg { width: 15px; height: 15px; }
+
+.btn-secondary {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+.btn-secondary:hover {
+    background-color: var(--bg-hover);
+    border-color: var(--border-dark);
+}
+
+.btn-primary {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+    box-shadow: 0 4px 12px var(--accent-light);
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-secondary);
+    transform: translateY(-1px);
+}
+
+.btn-sm { padding: 5px 12px; font-size: 11px; }
+
+/* Error Banner */
+.error-banner {
+    background-color: var(--danger-bg);
+    border: 1px solid var(--danger);
+    border-radius: var(--radius-md);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.banner-icon { font-size: 24px; }
+.banner-title { font-size: 16px; color: var(--danger); display: block; }
+.banner-text { font-size: 12px; color: var(--text-muted); }
+.banner-actions { margin-left: auto; display: flex; gap: 10px; }
+
+/* ------------------------------------------------------------
+   4 KPI METRIC TILES
+   ------------------------------------------------------------ */
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.kpi-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 24px;
+    box-shadow: var(--shadow-card);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: var(--transition);
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-dark);
+    box-shadow: var(--shadow-hover);
+}
+
+.hero-kpi {
+    border-color: rgba(232, 93, 63, 0.3);
+    background: linear-gradient(135deg, #FFFFFF, #FAF0ED);
+}
+
+.kpi-header { display: flex; justify-content: space-between; align-items: center; }
+.kpi-title { font-size: 11px; font-weight: 800; letter-spacing: 1.2px; color: var(--text-dim); }
+.kpi-icon { font-size: 18px; }
+
+.kpi-value {
+    font-size: 38px;
+    line-height: 1.05;
+    color: var(--text-main);
+    margin: 10px 0 6px 0;
+}
+
+.kpi-footer { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+
+.badge {
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: 20px;
+}
+
+.badge.positive { background-color: var(--success-bg); color: var(--success); }
+.badge.negative { background-color: var(--danger-bg); color: var(--danger); }
+
+.subtext { font-size: 11px; color: var(--text-dim); }
+
+/* ------------------------------------------------------------
+   CARDS & BRIEFING PANEL
+   ------------------------------------------------------------ */
+.card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 28px;
+    box-shadow: var(--shadow-card);
+    transition: var(--transition);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.card-title {
+    font-size: 24px;
+    color: var(--text-main);
+}
+
+.card-subtitle { font-size: 12px; color: var(--text-dim); }
+
+.tag-live {
+    font-size: 10px; font-weight: 800; letter-spacing: 1px;
+    padding: 4px 10px; border-radius: 20px;
+    background-color: var(--accent-light); color: var(--accent-primary);
+}
+
+.briefing-list { display: flex; flex-direction: column; gap: 12px; }
+
+.briefing-item {
+    background-color: var(--bg-card-subtle);
+    border-left: 3px solid var(--accent-primary);
+    padding: 14px 18px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    font-size: 13px;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+/* Tab Switchers */
+.tab-group {
+    display: inline-flex;
+    background-color: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 3px;
+    gap: 3px;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 6px 14px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-dim);
+    border-radius: calc(var(--radius-sm) - 2px);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.tab-btn:hover { color: var(--text-main); }
+
+.tab-btn.active {
+    background-color: var(--accent-primary);
+    color: #FFFFFF;
+}
+
+/* ------------------------------------------------------------
+   TIME-SERIES CHART SECTION
+   ------------------------------------------------------------ */
+.chart-stats-bar {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+    font-size: 12px;
+}
+
+.stat-item .lbl { font-size: 10px; font-weight: 800; color: var(--text-dim); }
+.stat-item strong { font-size: 13px; font-weight: 800; color: var(--text-main); }
+
+.chart-box { position: relative; width: 100%; }
+.svg-container { width: 100%; height: 300px; }
+
+.tooltip {
+    position: absolute;
+    top: 0; left: 0;
+    transform: translate(-50%, -120%);
+    background-color: var(--text-main);
+    color: var(--bg-page);
+    padding: 8px 14px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 700;
+    pointer-events: none;
+    z-index: 100;
+    white-space: nowrap;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+/* ------------------------------------------------------------
+   DESTINATION DEMAND INTELLIGENCE
+   ------------------------------------------------------------ */
+.insight-bar {
+    background-color: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    font-size: 13px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.dest-layout {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 24px;
+}
+
+.top-dest-hero {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: #FFFFFF;
+    border-radius: var(--radius-md);
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 0 10px 25px var(--accent-light);
+}
+
+.hero-tag { font-size: 10px; font-weight: 800; letter-spacing: 1.2px; opacity: 0.9; }
+.hero-name { font-size: 42px; line-height: 1.05; margin: 16px 0; }
+
+.hero-metrics {
+    display: flex; flex-direction: column; gap: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 16px;
+}
+
+.hero-m-item { display: flex; justify-content: space-between; align-items: center; }
+.m-lbl { font-size: 10px; font-weight: 800; opacity: 0.8; }
+.m-val { font-size: 16px; font-weight: 800; }
+
+.dest-list { display: flex; flex-direction: column; gap: 8px; }
+
+.dest-row {
+    background-color: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: var(--transition);
+}
+
+.dest-row:hover {
+    border-color: var(--border-dark);
+    transform: translateX(4px);
+}
+
+.dest-bar-track {
+    height: 6px; width: 100%;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.dest-bar-fill {
+    height: 100%;
+    background-color: var(--accent-primary);
+    border-radius: 3px;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------
+   SIM PACKAGES INTELLIGENCE
+   ------------------------------------------------------------ */
+.plans-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 16px;
+}
+
+.plan-card {
+    background-color: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: var(--transition);
+}
+
+.plan-card:hover {
+    border-color: var(--border-dark);
+    transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------
+   STAFF SALES MATRIX & LEADERBOARD
+   ------------------------------------------------------------ */
+.grid-2col {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 28px;
+}
+
+.dist-section {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.section-lbl { font-size: 11px; font-weight: 800; letter-spacing: 1px; color: var(--text-dim); }
+
+.leaderboard-list { display: flex; flex-direction: column; gap: 10px; }
+
+.lb-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+}
+
+.distribution-bars { display: flex; flex-direction: column; gap: 12px; margin-top: 12px; }
+
+.dist-track {
+    height: 6px;
+    background-color: rgba(0,0,0,0.05);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.dist-fill {
+    height: 100%;
+    background-color: var(--accent-primary);
+    border-radius: 3px;
+    transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ------------------------------------------------------------
+   DATA TABLE & PAGINATION
+   ------------------------------------------------------------ */
+.table-responsive { overflow-x: auto; max-height: 480px; }
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    text-align: left;
+}
+
+.data-table th {
+    position: sticky; top: 0;
+    background-color: var(--bg-card-subtle);
+    color: var(--text-dim);
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    z-index: 5;
+}
+
+.data-table th.sortable { cursor: pointer; }
+
+.data-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+.data-table tbody tr:hover { background-color: var(--bg-card-subtle); }
+.data-table.compact td, .data-table.compact th { padding: 6px 16px; }
+
+.text-right { text-align: right; }
+
+.table-actions { display: flex; align-items: center; gap: 12px; }
+
+.search-box { position: relative; display: flex; align-items: center; }
+.search-ico { position: absolute; left: 10px; width: 14px; height: 14px; color: var(--text-dim); }
+
+.input-search {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 6px 12px 6px 30px;
+    font-size: 12px;
+    color: var(--text-main);
+    width: 220px;
+    outline: none;
+    transition: var(--transition);
+}
+
+.input-search:focus { border-color: var(--accent-primary); }
+
+.pagination-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+    margin-top: 16px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: var(--text-dim);
+}
+
+.page-actions { display: flex; align-items: center; gap: 8px; }
+
+/* ------------------------------------------------------------
+   MODAL & TOASTS
+   ------------------------------------------------------------ */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-dialog {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.modal-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+}
+
+.btn-close { background: none; border: none; font-size: 18px; color: var(--text-dim); cursor: pointer; }
+
+.modal-body { padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+
+.field-group { display: flex; flex-direction: column; gap: 6px; }
+.field-label { font-size: 10px; font-weight: 800; color: var(--text-dim); letter-spacing: 0.5px; }
+
+.field-input {
+    background-color: var(--bg-card-subtle);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 12px;
+    font-size: 12px;
+    color: var(--text-main);
+    outline: none;
+}
+
+.status-bar { display: flex; justify-content: space-between; align-items: center; }
+.conn-text { font-size: 11px; font-weight: 700; color: var(--text-dim); }
+
+.btn-full { width: 100%; text-align: center; justify-content: center; margin-top: 10px; }
+
+.toast-stack {
+    position: fixed; bottom: 24px; right: 24px;
+    display: flex; flex-direction: column; gap: 8px;
+    z-index: 9999;
+}
+
+.toast-item {
+    background-color: var(--text-main);
+    color: var(--bg-page);
+    padding: 10px 18px;
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    opacity: 0;
+    transform: translateY(10px);
+    transition: var(--transition);
+}
+
+.toast-item.show { opacity: 1; transform: translateY(0); }
+
+.spinning { animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+@media (max-width: 1024px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .dest-layout { grid-template-columns: 1fr; }
+    .grid-2col { grid-template-columns: 1fr; }
+    .plans-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+    .dashboard-wrapper { padding: 20px; }
+    .top-nav { padding: 0 20px; }
+    .header-banner { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+}
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation Header -->
+    <header class="top-nav">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="brand-code">SI / 01</span>
+                <span class="brand-divider">—</span>
+                <span class="brand-title">Travel SIM Commerce Intelligence</span>
+            </div>
+            <div class="nav-actions">
+                <div class="status-pill" id="live-status-pill">
+                    <span class="pulse-dot"></span>
+                    <span id="live-status-text">● LIVE SUPABASE</span>
+                </div>
+                <button id="btn-open-settings" class="nav-btn" title="Supabase API Settings">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Body Container -->
+    <div class="dashboard-wrapper">
+        
+        <!-- Header Title & Controls Row -->
+        <div class="header-banner">
+            <div class="header-titles">
+                <h1 class="main-title">Travel SIM Commerce Intelligence</h1>
+                <div class="sub-date" id="current-date">MAY 20, 2026</div>
+            </div>
+
+            <div class="header-controls">
+                <div class="date-selector">
+                    <label for="as-of-date-picker">As of Date:</label>
+                    <input type="date" id="as-of-date-picker" class="date-input" value="2026-05-20">
+                </div>
+
+                <button id="btn-refresh" class="btn btn-secondary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                    Refresh
+                </button>
+
+                <button id="btn-export-main" class="btn btn-primary">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Export CSV
+                </button>
+            </div>
+        </div>
+
+        <!-- Connection Error Alert Banner -->
+        <div id="api-error-card" class="error-banner hidden">
+            <div class="banner-icon">⚠️</div>
+            <div class="banner-info">
+                <span class="banner-title">Supabase Connection Alert</span>
+                <span class="banner-text" id="api-error-message">Unable to reach live RPC endpoint.</span>
+            </div>
+            <div class="banner-actions">
+                <button id="btn-error-retry" class="btn btn-sm btn-primary">Retry</button>
+                <button id="btn-error-demo-mode" class="btn btn-sm btn-secondary">Demo Mode</button>
+            </div>
+        </div>
+
+        <!-- 4 Top Executive KPI Cards -->
+        <section class="kpi-grid">
+            <!-- KPI 1: MTD SIM REVENUE -->
+            <div class="kpi-card hero-kpi">
+                <div class="kpi-header">
+                    <span class="kpi-title">MTD SIM REVENUE</span>
+                    <span class="kpi-icon">💎</span>
+                </div>
+                <div class="kpi-value" id="hero-mtd-revenue">₹0.00</div>
+                <div class="kpi-footer">
+                    <span class="badge positive" id="hero-trend-pct">+0.0%</span>
+                    <span class="subtext">vs prev MTD (₹<span id="hero-prev-mtd-rev-badge">0</span>)</span>
+                </div>
+            </div>
+
+            <!-- KPI 2: TODAY REVENUE -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">TODAY REVENUE</span>
+                    <span class="kpi-icon">⚡</span>
+                </div>
+                <div class="kpi-value" id="today-revenue">₹0.00</div>
+                <div class="kpi-footer">
+                    <span class="badge positive" id="today-rev-pct">+0.0%</span>
+                    <span class="subtext">vs prev same day (₹<span id="prev-sameday-rev">0</span>)</span>
+                </div>
+            </div>
+
+            <!-- KPI 3: MTD SIM ORDERS -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">MTD SIM ORDERS</span>
+                    <span class="kpi-icon">📦</span>
+                </div>
+                <div class="kpi-value" id="hero-mtd-sales">0</div>
+                <div class="kpi-footer">
+                    <span class="subtext">Previous MTD: <strong id="hero-prev-mtd-sales">0</strong> orders</span>
+                </div>
+            </div>
+
+            <!-- KPI 4: TODAY SIM ORDERS -->
+            <div class="kpi-card">
+                <div class="kpi-header">
+                    <span class="kpi-title">TODAY SIM ORDERS</span>
+                    <span class="kpi-icon">📈</span>
+                </div>
+                <div class="kpi-value" id="today-sales">0</div>
+                <div class="kpi-footer">
+                    <span class="badge positive" id="today-sales-pct">+0.0%</span>
+                    <span class="subtext">vs prev same day (<span id="prev-sameday-sales">0</span> orders)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Automated Briefing Card -->
+        <section class="card briefing-card">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Automated Telemetry Briefing</h3>
+                    <p class="card-subtitle">Real-time commercial narrative generated directly from Supabase RPC data</p>
+                </div>
+                <span class="tag-live">LIVE SIGNALS</span>
+            </div>
+            <div class="briefing-list" id="story-cards-container">
+                <div class="briefing-item">Loading commercial signals...</div>
+            </div>
+        </section>
+
+        <!-- Time-Series Performance Chart Section -->
+        <section class="card chart-card" id="performance">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title" id="chart-main-title">SIM Sales Volume Trajectory</h3>
+                    <p class="card-subtitle" id="chart-main-subtitle">Time-series trajectory derived from backend RPC endpoints</p>
+                </div>
+
+                <div class="tab-group" role="tablist">
+                    <button class="tab-btn active" data-metric="daily_orders">Daily Orders</button>
+                    <button class="tab-btn" data-metric="monthly_orders">Monthly Orders</button>
+                    <button class="tab-btn" data-metric="staff_revenue">Staff Revenue</button>
+                </div>
+            </div>
+
+            <div class="chart-stats-bar">
+                <div class="stat-item"><span class="lbl">PEAK:</span> <strong id="chart-peak-val">--</strong></div>
+                <div class="stat-item"><span class="lbl">LOWEST:</span> <strong id="chart-low-val">--</strong></div>
+                <div class="stat-item"><span class="lbl">AVERAGE:</span> <strong id="chart-avg-val">--</strong></div>
+            </div>
+
+            <div class="chart-box">
+                <div id="chart-canvas-container" class="svg-container"></div>
+                <div id="chart-tooltip" class="tooltip hidden"></div>
+            </div>
+        </section>
+
+        <!-- Destination Demand Intelligence Section -->
+        <section class="card dest-card" id="destinations">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Destination Demand Intelligence</h3>
+                    <p class="card-subtitle">Travel SIM consumption & revenue breakdown across 56 destination countries</p>
+                </div>
+
+                <div class="tab-group">
+                    <button class="tab-btn active" id="btn-dest-sort-orders" data-sort="orders">Sort by Orders</button>
+                    <button class="tab-btn" id="btn-dest-sort-revenue" data-sort="revenue">Sort by Revenue</button>
+                </div>
+            </div>
+
+            <div class="insight-bar" id="dest-insight-statement">
+                <span class="insight-icon">✈️</span>
+                <span id="dest-insight-text">Analyzing global destination telemetry...</span>
+            </div>
+
+            <div class="dest-layout">
+                <!-- Top Destination Hero Highlight Box -->
+                <div class="top-dest-hero">
+                    <span class="hero-tag">#1 TRAVEL DESTINATION</span>
+                    <h2 class="hero-name" id="top-dest-name">Loading...</h2>
+                    <div class="hero-metrics">
+                        <div class="hero-m-item">
+                            <span class="m-lbl">TOTAL ORDERS</span>
+                            <span class="m-val" id="top-dest-orders">0</span>
+                        </div>
+                        <div class="hero-m-item">
+                            <span class="m-lbl">TOTAL REVENUE</span>
+                            <span class="m-val" id="top-dest-revenue">₹0.00</span>
+                        </div>
+                        <div class="hero-m-item">
+                            <span class="m-lbl">REVENUE SHARE</span>
+                            <span class="m-val" id="top-dest-share">0%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ranked Country Cards & Pagination -->
+                <div class="ranked-dest-wrap">
+                    <div id="destination-ranking-container" class="dest-list"></div>
+
+                    <div class="pagination-row">
+                        <span class="page-text" id="dest-page-indicator-text">Showing 1–10 of 56 destinations</span>
+                        <div class="page-actions">
+                            <select id="dest-page-size-select" class="select-field">
+                                <option value="10" selected>10 / page</option>
+                                <option value="15">15 / page</option>
+                                <option value="25">25 / page</option>
+                            </select>
+                            <button id="btn-dest-prev" class="btn btn-sm btn-secondary" disabled>Prev</button>
+                            <button id="btn-dest-next" class="btn btn-sm btn-secondary" disabled>Next</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SIM Packages Intelligence Section -->
+        <section class="card plans-card" id="plans">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">SIM Packages Intelligence</h3>
+                    <p class="card-subtitle">Performance breakdown across 275+ travel SIM packages and data allowances</p>
+                </div>
+
+                <div class="tab-group">
+                    <button class="tab-btn active" id="btn-plan-sort-orders" data-sort="orders">Most Orders</button>
+                    <button class="tab-btn" id="btn-plan-sort-revenue" data-sort="revenue">Most Revenue</button>
+                    <button class="tab-btn" id="btn-plan-sort-aov" data-sort="aov">Highest AOV</button>
+                </div>
+            </div>
+
+            <div class="insight-bar" id="plan-insight-statement">
+                <span class="insight-icon">📶</span>
+                <span id="plan-insight-text">Analyzing SIM plan telemetry...</span>
+            </div>
+
+            <div id="plans-container" class="plans-grid"></div>
+
+            <div class="pagination-row">
+                <span class="page-text" id="plan-page-indicator-text">Showing 1–10 of 275 plans</span>
+                <div class="page-actions">
+                    <select id="plan-page-size-select" class="select-field">
+                        <option value="10" selected>10 / page</option>
+                        <option value="15">15 / page</option>
+                        <option value="25">25 / page</option>
+                    </select>
+                    <button id="btn-plan-prev" class="btn btn-sm btn-secondary" disabled>Prev</button>
+                    <button id="btn-plan-next" class="btn btn-sm btn-secondary" disabled>Next</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Staff Analytics & Leaderboard Section -->
+        <section class="grid-2col staff-section" id="people">
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Staff Sales Matrix</h3>
+                        <p class="card-subtitle">Individual revenue generation, order volume & today's sales velocity</p>
+                    </div>
+                </div>
+                <div id="matrix-container" class="table-scroll"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div>
+                        <h3 class="card-title">Staff Leaderboard</h3>
+                        <p class="card-subtitle">Staff ranked by monthly revenue share</p>
+                    </div>
+                </div>
+                <div id="leaderboard-list" class="leaderboard-list"></div>
+
+                <div class="dist-section">
+                    <span class="section-lbl">REVENUE SHARE CONTRIBUTION</span>
+                    <div id="distribution-bars" class="distribution-bars"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Employee Audit Log Table Section -->
+        <section class="card table-card" id="data">
+            <div class="card-header">
+                <div>
+                    <h3 class="card-title">Employee Sales Audit Log</h3>
+                    <p class="card-subtitle">Complete staff sales performance log derived from employee_table RPC</p>
+                </div>
+
+                <div class="table-actions">
+                    <div class="search-box">
+                        <svg class="search-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                        <input type="text" id="table-search-input" class="input-search" placeholder="Search staff member...">
+                    </div>
+                    <button id="btn-density-toggle" class="btn btn-sm btn-secondary">Density: <strong id="density-state-lbl">Comfortable</strong></button>
+                </div>
+            </div>
+
+            <div class="table-responsive">
+                <table class="data-table" id="main-data-table">
+                    <thead>
+                        <tr>
+                            <th data-sort="rank" class="sortable">Rank <span class="sort-indicator"></span></th>
+                            <th data-sort="name" class="sortable">Staff Name <span class="sort-indicator"></span></th>
+                            <th data-sort="monthlyRevenue" class="sortable text-right active-sort">Monthly Revenue <span class="sort-indicator">↓</span></th>
+                            <th data-sort="monthlySales" class="sortable text-right">Monthly Sales <span class="sort-indicator"></span></th>
+                            <th data-sort="todayRevenue" class="sortable text-right">Today Revenue <span class="sort-indicator"></span></th>
+                            <th data-sort="todaySales" class="sortable text-right">Today Sales <span class="sort-indicator"></span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-tbody"></tbody>
+                </table>
+            </div>
+
+            <div class="pagination-row">
+                <span class="page-text" id="pagination-info">Showing 1–10 of 10 staff members</span>
+                <div class="page-actions">
+                    <select id="table-page-size-select" class="select-field">
+                        <option value="10" selected>10 / page</option>
+                        <option value="15">15 / page</option>
+                        <option value="25">25 / page</option>
+                    </select>
+                    <button id="btn-prev-page" class="btn btn-sm btn-secondary" disabled>Prev</button>
+                    <span id="page-indicator" class="page-num">Page 1 of 1</span>
+                    <button id="btn-next-page" class="btn btn-sm btn-secondary" disabled>Next</button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- API CONFIGURATION MODAL -->
+    <div id="settings-modal" class="modal-overlay hidden">
+        <div class="modal-dialog">
+            <div class="modal-head">
+                <h3>Supabase API Settings</h3>
+                <button id="btn-close-settings" class="btn-close">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="field-group">
+                    <label class="field-label">DATA SOURCE ENGINE</label>
+                    <div class="tab-group" style="width: 100%;">
+                        <button class="tab-btn active" id="btn-settings-mode-live" style="flex:1;">LIVE SUPABASE</button>
+                        <button class="tab-btn" id="btn-settings-mode-demo" style="flex:1;">DEMO MODE</button>
+                    </div>
+                </div>
+
+                <div class="field-group">
+                    <label for="settings-url-input" class="field-label">SUPABASE PROJECT URL</label>
+                    <input type="text" id="settings-url-input" class="field-input" placeholder="https://your-project.supabase.co">
+                </div>
+
+                <div class="field-group">
+                    <label for="settings-key-input" class="field-label">SUPABASE ANON / PUBLISHABLE KEY</label>
+                    <input type="password" id="settings-key-input" class="field-input" placeholder="Paste public anon key...">
+                </div>
+
+                <div class="status-bar">
+                    <button id="btn-test-connection" class="btn btn-sm btn-secondary">Test Connection</button>
+                    <span id="settings-conn-status" class="conn-text">● Ready to test</span>
+                </div>
+
+                <button id="btn-save-settings" class="btn btn-primary btn-full">Save Configuration</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-container" class="toast-stack"></div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
